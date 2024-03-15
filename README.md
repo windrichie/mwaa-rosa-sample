@@ -10,16 +10,20 @@ This project is used for demo purposes only and should NOT be considered for pro
 This repository provides the DAG file. As such there are several pre-requisites that you would need to complete before you can use the DAG.
 
 1. **Create ROSA cluster**
-If you do not have an existing ROSA cluster, you may refer to [this workshop](https://catalog.workshops.aws/aws-openshift-workshop/en-US) on a guide to create one. You would need to first [enable ROSA](https://catalog.workshops.aws/aws-openshift-workshop/en-US/1-getting-started/1-enabling-rosa) in your AWS account, [install CLI tools](https://catalog.workshops.aws/aws-openshift-workshop/en-US/1-getting-started/2-deployment-tools) such as OpenShift and ROSA CLI, and [create a cluster](https://catalog.workshops.aws/aws-openshift-workshop/en-US/1-getting-started/3-create-cluster) using ROSA CLI or Terraform.  
+
+    If you do not have an existing ROSA cluster, you may refer to [this workshop](https://catalog.workshops.aws/aws-openshift-workshop/en-US) on a guide to create one. You would need to first [enable ROSA](https://catalog.workshops.aws/aws-openshift-workshop/en-US/1-getting-started/1-enabling-rosa) in your AWS account, [install CLI tools](https://catalog.workshops.aws/aws-openshift-workshop/en-US/1-getting-started/2-deployment-tools) such as OpenShift and ROSA CLI, and [create a cluster](https://catalog.workshops.aws/aws-openshift-workshop/en-US/1-getting-started/3-create-cluster) using ROSA CLI or Terraform.  
 
 1. **ROSA setup - create IdP, Project and User**
-For MWAA to be able to spin up pods in the ROSA cluster, you need to pre-create a Project (namespace) and user in your ROSA cluster. There are several identity provider (IdP) options for your ROSA cluster, but in this repository, we set up a local LDAP as the IdP. Follow [this workshop section](https://catalog.workshops.aws/aws-openshift-workshop/en-US/1-getting-started/4-create-users) to set-up an LDAP and create users and projects (MWAA only needs 1). In this repository, we are using `user1` Project and user.  <br/>
+
+    For MWAA to be able to spin up pods in the ROSA cluster, you need to pre-create a Project (namespace) and user in your ROSA cluster. There are several identity provider (IdP) options for your ROSA cluster, but in this repository, we set up a local LDAP as the IdP. Follow [this workshop section](https://catalog.workshops.aws/aws-openshift-workshop/en-US/1-getting-started/4-create-users) to set-up an LDAP and create users and projects (MWAA only needs 1). In this repository, we are using `user1` Project and user.  <br/>
 
 1. **Create MWAA environment**
-To create an MWAA environment, you may follow [this documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/create-environment.html).
+
+    To create an MWAA environment, you may follow [this documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/create-environment.html).
 
 1. **Create secret in AWS Secrets Manager**
-Create a secret in AWS Secrets Manager that contains the ROSA username, password and namespace that MWAA will be using. This way there is no need to hardcode credentials in the DAG file. Alternatively, you can also set-up Secrets Manager as the secret backend for your MWAA environment (see [this page](https://docs.aws.amazon.com/mwaa/latest/userguide/connections-secrets-manager.html)).
+
+    Create a secret in AWS Secrets Manager that contains the ROSA username, password and namespace that MWAA will be using. This way there is no need to hardcode credentials in the DAG file. Alternatively, you can also set-up Secrets Manager as the secret backend for your MWAA environment (see [this page](https://docs.aws.amazon.com/mwaa/latest/userguide/connections-secrets-manager.html)).
 
 ## Deployment & Testing Steps
 
